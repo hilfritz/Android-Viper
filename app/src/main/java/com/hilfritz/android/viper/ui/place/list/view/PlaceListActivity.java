@@ -1,4 +1,4 @@
-package com.hilfritz.android.viper.ui.place.list;
+package com.hilfritz.android.viper.ui.place.list.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.hilfritz.viper.android.R;
+import com.hilfritz.android.viper.R;
 
 public class PlaceListActivity extends AppCompatActivity {
 

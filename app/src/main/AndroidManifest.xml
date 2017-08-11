@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.place.list.PlaceListActivity"
+            android:name=".ui.place.list.view.PlaceListActivity"
             android:label="@string/title_activity_place_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
