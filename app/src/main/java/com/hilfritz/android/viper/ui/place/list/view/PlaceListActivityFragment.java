@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 public class PlaceListActivityFragment extends BaseFragment implements PlaceListView {
 
     View view;
-    PlacesListPresenter presenter;
+    PlacesListPresenter presenter = new PlaceListPresenterImpl();
 
     public PlaceListActivityFragment() {
     }
@@ -36,7 +36,8 @@ public class PlaceListActivityFragment extends BaseFragment implements PlaceList
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter = new PlaceListPresenterImpl<PlaceListView>(this);
+        presenter.init(this);
+        presenter.populate();
     }
 
     @Override
@@ -57,5 +58,10 @@ public class PlaceListActivityFragment extends BaseFragment implements PlaceList
     @Override
     public void showFullscreenMessage(String str) {
 
+    }
+
+    @Override
+    public boolean isNewlyCreatedPresenter() {
+        return getActivity().isChangingConfigurations()==false;
     }
 }

@@ -5,4 +5,5 @@ package com.hilfritz.android.viper.application.base;
  */
 
 public interface BaseView {
+    boolean isNewlyCreatedPresenter();
 }
