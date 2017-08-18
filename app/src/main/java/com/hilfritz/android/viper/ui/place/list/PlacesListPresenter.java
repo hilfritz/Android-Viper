@@ -1,5 +1,6 @@
 package com.hilfritz.android.viper.ui.place.list;
 
+import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.ui.place.list.view.PlaceListView;
 
 /**
@@ -7,9 +8,9 @@ import com.hilfritz.android.viper.ui.place.list.view.PlaceListView;
  */
 
 
-public interface PlacesListPresenter<V extends PlaceListView> {
+public interface PlacesListPresenter {
 
-    void init(V view);
+    void init(PlaceListView view, ThreadProvider threadProvider);
     void populate();
 
 }

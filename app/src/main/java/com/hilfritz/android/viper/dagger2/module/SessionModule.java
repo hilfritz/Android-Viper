@@ -2,7 +2,7 @@ package com.hilfritz.android.viper.dagger2.module;
 
 
 import com.hilfritz.android.viper.application.MyApplication;
-import com.hilfritz.android.viper.dagger2.session.SessionData;
+import com.hilfritz.android.viper.data.session.SessionData;
 import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.application.thread.ThreadProviderImpl;
 
@@ -35,6 +35,5 @@ public class SessionModule {
     ThreadProvider provideThreadProvider(){
         return new ThreadProviderImpl(Schedulers.io(), AndroidSchedulers.mainThread());
     }
-
 
 }

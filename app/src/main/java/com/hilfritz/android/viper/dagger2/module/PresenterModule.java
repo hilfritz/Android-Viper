@@ -2,6 +2,10 @@ package com.hilfritz.android.viper.dagger2.module;
 
 
 import com.hilfritz.android.viper.application.MyApplication;
+import com.hilfritz.android.viper.ui.home.HomePresenter;
+import com.hilfritz.android.viper.ui.home.HomePresenterImpl;
+import com.hilfritz.android.viper.ui.place.list.PlaceListPresenterImpl;
+import com.hilfritz.android.viper.ui.place.list.PlacesListPresenter;
 
 import javax.inject.Singleton;
 
@@ -20,15 +24,21 @@ public class PresenterModule {
     public PresenterModule(MyApplication myApplication) {
         this.myApplication = myApplication;
     }
-
-    /*
     //FRAGMENTS HERE
     @Provides
     @Singleton
-    PlaceListPresenter providePlaceListPresenter(){
-        return new PlaceListPresenter(myApplication);
+    PlacesListPresenter providePlaceListPresenter(){
+        return new PlaceListPresenterImpl();
     }
-    */
+
+    //FRAGMENTS HERE
+    @Provides
+    @Singleton
+    HomePresenter provideHomePresenter(){
+        return new HomePresenterImpl();
+    }
+
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.hilfritz.android.viper.ui.place.list;
 
+import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.ui.place.list.view.PlaceListView;
 
 /**
@@ -7,6 +8,7 @@ import com.hilfritz.android.viper.ui.place.list.view.PlaceListView;
  */
 
 public class PlaceListPresenterImpl implements PlacesListPresenter {
+
     PlaceListView view;
 
 
@@ -15,7 +17,7 @@ public class PlaceListPresenterImpl implements PlacesListPresenter {
     }
 
     @Override
-    public void init(PlaceListView view) {
+    public void init(PlaceListView view, ThreadProvider threadProvider) {
         this.view = view;
         if (view.isNewlyCreatedPresenter()) {
             //INITIALIZE THE VIEWS

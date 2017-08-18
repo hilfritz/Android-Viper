@@ -51,4 +51,5 @@
     </string-array>
     <string name="title_activity_place_list">PlaceListActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

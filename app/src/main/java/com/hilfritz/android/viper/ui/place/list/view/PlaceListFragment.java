@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hilfritz.android.viper.R;
+import com.hilfritz.android.viper.application.MyApplication;
 import com.hilfritz.android.viper.application.base.BaseFragment;
-import com.hilfritz.android.viper.ui.place.list.PlaceListPresenterImpl;
+import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.ui.place.list.PlacesListPresenter;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
@@ -17,12 +20,24 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PlaceListActivityFragment extends BaseFragment implements PlaceListView {
+public class PlaceListFragment extends BaseFragment implements PlaceListView {
 
     View view;
-    PlacesListPresenter presenter = new PlaceListPresenterImpl();
 
-    public PlaceListActivityFragment() {
+    @Inject
+    PlacesListPresenter presenter;
+
+    @Inject
+    ThreadProvider thread;
+
+    public PlaceListFragment() {
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ((MyApplication)getActivity().getApplication()).getAppComponent().inject(this);
     }
 
     @Override
@@ -36,7 +51,7 @@ public class PlaceListActivityFragment extends BaseFragment implements PlaceList
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.init(this);
+        presenter.init(this, thread);
         presenter.populate();
     }
 

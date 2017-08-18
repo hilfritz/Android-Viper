@@ -7,7 +7,7 @@ public class PlaceListPresenterImplTest {
 
 
     public void sampleTest(){
-        
+
     }
 
 }

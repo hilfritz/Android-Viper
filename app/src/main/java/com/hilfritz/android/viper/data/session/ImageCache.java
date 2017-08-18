@@ -1,4 +1,4 @@
-package com.hilfritz.android.viper.dagger2.session;
+package com.hilfritz.android.viper.data.session;
 
 import android.os.Environment;
 import android.util.Log;

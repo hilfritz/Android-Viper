@@ -43,7 +43,7 @@ dependencies {
     compile "com.squareup.retrofit2:converter-gson:$retrofit2_version"
     compile "com.android.support:support-v4:$android_support_version"
     compile "com.android.support:design:$android_support_version"
-    
+
     /**
      * TESTS
      * https://stackoverflow.com/questions/40696796/android-how-to-use-espresso-2-2-2-with-support-25-0-0
@@ -55,7 +55,7 @@ dependencies {
         exclude module: 'javax.annotation-api'
         exclude module: 'support-annotations'
     })
-    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2.2' ){
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2.2') {
         exclude module: 'espresso-core'
         exclude module: 'support-v4'
         exclude module: 'recyclerview-v7'
@@ -66,8 +66,6 @@ dependencies {
     androidTestCompile('com.android.support.test:rules:0.5') {
         exclude module: 'support-annotations'
     }
-
-
 
     /*
                                         compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
@@ -85,12 +83,10 @@ dependencies {
     /**
      * FRESCO LIBRARY
      */
-    compile 'com.facebook.fresco:webpsupport:1.0.1'
-    testCompile 'junit:junit:4.12'
     testCompile('org.robolectric:shadows-support-v4:3.0') {
         exclude module: 'support-v4'
     }
-     /**
+    /**
      * ANIMATION LIBRARY
      */
     compile "com.android.support:support-compat:$android_support_version"
@@ -102,8 +98,11 @@ dependencies {
      */
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.facebook.fresco:webpsupport:1.0.1'
+    testCompile 'junit:junit:4.12'
+    compile 'com.facebook.fresco:webpsupport:1.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:multidex:1.0.1'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.jakewharton.timber:timber:4.5.1'
     compile 'io.reactivex:rxandroid:1.2.1'
@@ -125,7 +124,6 @@ dependencies {
     compile 'com.facebook.fresco:animated-base-support:1.0.1'
     compile 'com.facebook.fresco:animated-gif:1.0.1'
     compile 'com.facebook.fresco:animated-webp:1.0.1'
-    compile 'com.facebook.fresco:webpsupport:1.0.1'
     compile 'com.google.android.gms:play-services-analytics:10.0.1'
     compile 'com.daimajia.easing:library:2.0@aar'
     compile 'com.daimajia.androidanimations:library:2.2@aar'

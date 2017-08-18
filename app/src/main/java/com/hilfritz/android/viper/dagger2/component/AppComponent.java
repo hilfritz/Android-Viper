@@ -6,6 +6,8 @@ import com.hilfritz.android.viper.dagger2.module.PresenterModule;
 import com.hilfritz.android.viper.dagger2.module.RestApiModule;
 import com.hilfritz.android.viper.dagger2.module.SessionModule;
 import com.hilfritz.android.viper.dagger2.module.UtilityModule;
+import com.hilfritz.android.viper.ui.home.view.HomeFragment;
+import com.hilfritz.android.viper.ui.place.list.view.PlaceListFragment;
 
 import javax.inject.Singleton;
 
@@ -23,8 +25,10 @@ import dagger.Component;
         CacheModule.class
 })
 public interface AppComponent {
-    /*
     void inject(PlaceListFragment fragment);
+    void inject(HomeFragment fragment);
+    /*
+
     void inject(PlaceListPresenter presenter);
     void inject(BaseActivity baseActivity);
     void inject(SimpleDialog simpleDialog);

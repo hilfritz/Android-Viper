@@ -1,5 +1,7 @@
 package com.hilfritz.android.viper.application.interactor;
 
+import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
+
 import rx.Scheduler;
 
 /**
@@ -9,6 +11,7 @@ import rx.Scheduler;
 public abstract class AbstractBaseInteractor implements BaseInteractor {
     Scheduler ioThread;
     Scheduler mainThread;
+    SephoraProductRepository sephoraProductRepository;
 
     protected boolean mIsCanceled;
     protected boolean mIsRunning;
@@ -38,5 +41,29 @@ public abstract class AbstractBaseInteractor implements BaseInteractor {
 
     @Override
     public abstract void run();
+
+    public SephoraProductRepository getSephoraProductRepository() {
+        return sephoraProductRepository;
+    }
+
+    public void setSephoraProductRepository(SephoraProductRepository sephoraProductRepository) {
+        this.sephoraProductRepository = sephoraProductRepository;
+    }
+
+    public Scheduler getIoThread() {
+        return ioThread;
+    }
+
+    public void setIoThread(Scheduler ioThread) {
+        this.ioThread = ioThread;
+    }
+
+    public Scheduler getMainThread() {
+        return mainThread;
+    }
+
+    public void setMainThread(Scheduler mainThread) {
+        this.mainThread = mainThread;
+    }
 }
 
