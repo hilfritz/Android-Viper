@@ -4,6 +4,9 @@ import com.hilfritz.android.viper.data.sephoraApi.pojo.category.CategoriesWrappe
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.ProductDetailsWrapper;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.ProductsListWrapper;
 
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -11,9 +14,17 @@ import rx.Observable;
  */
 
 public interface SephoraProductRepository {
+
+    @GET(SephoraApiConstants.CATEGORIES_URL)
     Observable<CategoriesWrapper> getCategories();
-    Observable<ProductsListWrapper> getProductsByPageAndCategory(long page, String cateogry);
-    Observable<ProductDetailsWrapper> getProductsById(long id);
+
+    @GET(SephoraApiConstants.PRODUCTS_URL)
+    Observable<ProductsListWrapper> getProductsByPageAndCategory(
+            @Query("page") int page,
+            @Query("category") String cateogry);
+
+    @GET(SephoraApiConstants.PRODUCT_DETAIL_URL)
+    Observable<ProductDetailsWrapper> getProductsById(@Path("id") long id);
 
 
 }

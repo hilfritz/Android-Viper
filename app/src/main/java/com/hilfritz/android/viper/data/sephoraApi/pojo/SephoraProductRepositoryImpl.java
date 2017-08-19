@@ -19,7 +19,7 @@ public class SephoraProductRepositoryImpl implements SephoraProductRepository{
     }
 
     @Override
-    public Observable<ProductsListWrapper> getProductsByPageAndCategory(long page, String cateogry) {
+    public Observable<ProductsListWrapper> getProductsByPageAndCategory(int page, String cateogry) {
         return null;
     }
 

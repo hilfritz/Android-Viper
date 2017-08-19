@@ -4,6 +4,8 @@ package com.hilfritz.android.viper.dagger2.module;
 import com.hilfritz.android.viper.application.MyApplication;
 import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.application.thread.ThreadProviderImpl;
+import com.hilfritz.android.viper.data.cartRepository.CartManager;
+import com.hilfritz.android.viper.data.cartRepository.CartManagerImpl;
 import com.hilfritz.android.viper.data.session.SessionData;
 import com.hilfritz.android.viper.navigation.Router;
 import com.hilfritz.android.viper.navigation.RouterImpl;
@@ -43,5 +45,11 @@ public class SessionModule {
     Router provideRouter(){
         return new RouterImpl();
     }
+    @Singleton
+    @Provides
+    CartManager provideCartManager(){
+        return new CartManagerImpl();
+    }
+
 
 }
