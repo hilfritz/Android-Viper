@@ -2,9 +2,11 @@ package com.hilfritz.android.viper.dagger2.module;
 
 
 import com.hilfritz.android.viper.application.MyApplication;
-import com.hilfritz.android.viper.data.session.SessionData;
 import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.application.thread.ThreadProviderImpl;
+import com.hilfritz.android.viper.data.session.SessionData;
+import com.hilfritz.android.viper.navigation.Router;
+import com.hilfritz.android.viper.navigation.RouterImpl;
 
 import javax.inject.Singleton;
 
@@ -34,6 +36,12 @@ public class SessionModule {
     @Provides
     ThreadProvider provideThreadProvider(){
         return new ThreadProviderImpl(Schedulers.io(), AndroidSchedulers.mainThread());
+    }
+
+    @Singleton
+    @Provides
+    Router provideRouter(){
+        return new RouterImpl();
     }
 
 }

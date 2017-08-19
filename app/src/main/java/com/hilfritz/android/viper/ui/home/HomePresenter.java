@@ -14,7 +14,6 @@ public interface HomePresenter extends GetCategoriesUseCase.Callback{
     void populate();
     //// TODO: 19/8/17 make the view implement the presenter interface
     void showError(String str);
-    void showCartCount(String str);
-    void openCategoryProductList(long categoryId);
+    void openCategoryProductList(String categoryName,int totalProductsInCategory);
 
 }

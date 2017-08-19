@@ -15,8 +15,8 @@ public interface GetCategoriesUseCase extends BaseInteractor {
      * NOTE: usecase calbacks should be implemented on both presenter and view(fragment/activity/dialog)
      */
     public interface Callback{
-        void showList(ArrayList<Category> products);
-        void showListRetrieveError(int stringId);
-        void showListRetrieveError(String  string);
+        void showCategoryList(ArrayList<Category> categories);
+        void showCategoryListRetrieveError(int stringId);
+        void showCategoryListRetrieveError(String  string);
     }
 }

@@ -6,6 +6,10 @@ import com.hilfritz.android.viper.ui.home.HomePresenter;
 import com.hilfritz.android.viper.ui.home.HomePresenterImpl;
 import com.hilfritz.android.viper.ui.place.list.PlaceListPresenterImpl;
 import com.hilfritz.android.viper.ui.place.list.PlacesListPresenter;
+import com.hilfritz.android.viper.ui.products.detail.ProductDetailPresenter;
+import com.hilfritz.android.viper.ui.products.detail.ProductDetailPresenterImpl;
+import com.hilfritz.android.viper.ui.products.list.ProductListPresenter;
+import com.hilfritz.android.viper.ui.products.list.ProductListPresenterImpl;
 
 import javax.inject.Singleton;
 
@@ -38,7 +42,16 @@ public class PresenterModule {
         return new HomePresenterImpl();
     }
 
+    @Provides
+    @Singleton
+    ProductListPresenter provideProductListPresenter(){
+        return new ProductListPresenterImpl();
+    }
 
-
+    @Provides
+    @Singleton
+    ProductDetailPresenter provideProductDetailPresenter(){
+        return new ProductDetailPresenterImpl();
+    }
 
 }

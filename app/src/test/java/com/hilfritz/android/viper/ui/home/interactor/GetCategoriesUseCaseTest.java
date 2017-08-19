@@ -73,10 +73,10 @@ public class GetCategoriesUseCaseTest extends AndroidTest{
         useCase.run();
 
         //assert
-        verify(presenter, atLeastOnce()).showList(sampleCategory);
+        verify(presenter, atLeastOnce()).showCategoryList(sampleCategory);
         verify(presenter, never()).showError(anyString());
-        verify(presenter, never()).showListRetrieveError(anyString());
-        verify(presenter, never()).showListRetrieveError(anyInt());
+        verify(presenter, never()).showCategoryListRetrieveError(anyString());
+        verify(presenter, never()).showCategoryListRetrieveError(anyInt());
 
     }
     @Test
@@ -97,9 +97,9 @@ public class GetCategoriesUseCaseTest extends AndroidTest{
         useCase.run();
 
         //assert
-        verify(presenter, never()).showList((ArrayList<Category>) any());
-        verify(presenter, atLeastOnce()).showListRetrieveError(anyInt());
-        verify(presenter, never()).showListRetrieveError(anyString());
+        verify(presenter, never()).showCategoryList((ArrayList<Category>) any());
+        verify(presenter, atLeastOnce()).showCategoryListRetrieveError(anyInt());
+        verify(presenter, never()).showCategoryListRetrieveError(anyString());
     }
 
     @Test
@@ -121,9 +121,9 @@ public class GetCategoriesUseCaseTest extends AndroidTest{
         useCase.run();
 
         //assert
-        verify(presenter, never()).showList((ArrayList<Category>) any());
-        verify(presenter, never()).showListRetrieveError(anyInt());
-        verify(presenter, atLeastOnce()).showListRetrieveError(anyString());
+        verify(presenter, never()).showCategoryList((ArrayList<Category>) any());
+        verify(presenter, never()).showCategoryListRetrieveError(anyInt());
+        verify(presenter, atLeastOnce()).showCategoryListRetrieveError(anyString());
     }
 
 }

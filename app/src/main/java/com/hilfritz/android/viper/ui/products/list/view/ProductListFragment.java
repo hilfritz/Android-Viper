@@ -1,21 +1,20 @@
-package com.hilfritz.android.viper.ui.home.view;
+package com.hilfritz.android.viper.ui.products.list.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.hilfritz.android.viper.R;
 import com.hilfritz.android.viper.application.MyApplication;
 import com.hilfritz.android.viper.application.base.BaseFragment;
 import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
-import com.hilfritz.android.viper.data.sephoraApi.pojo.category.Category;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
 import com.hilfritz.android.viper.navigation.Router;
-import com.hilfritz.android.viper.ui.home.HomePresenter;
+import com.hilfritz.android.viper.navigation.RouterImpl;
+import com.hilfritz.android.viper.ui.products.list.ProductListPresenter;
 
 import java.util.ArrayList;
 
@@ -23,33 +22,37 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
-
 /**
  * A placeholder fragment containing a simple view.
  */
-public class HomeFragment extends BaseFragment implements HomeView{
+public class ProductListFragment extends BaseFragment implements ProductListView{
+
     View view;
     @Inject
-    HomePresenter presenter;
+    ProductListPresenter presenter;
     @Inject
     ThreadProvider threadProvider;
     @Inject
     Router router;
     @Inject
     SephoraProductRepository sephoraProductRepository;
+    String categoryName;
+    int totalProductsInCategory =0;
 
-    public HomeFragment() {
+    public ProductListFragment() {
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((MyApplication)getActivity().getApplication()).getAppComponent().inject(this);
+        categoryName = getActivity().getIntent().getStringExtra(RouterImpl.EXTRA_CATEGORY_NAME);
+        totalProductsInCategory = getActivity().getIntent().getIntExtra(RouterImpl.EXTRA_CATEGORY_TOTAL_PRODUCT_COUNT, 0);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_product_list, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -57,8 +60,9 @@ public class HomeFragment extends BaseFragment implements HomeView{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.init(this, threadProvider, sephoraProductRepository);
+        presenter.init(this, threadProvider, sephoraProductRepository, categoryName, totalProductsInCategory);
     }
+
 
     @Override
     public void showLoading() {
@@ -71,13 +75,13 @@ public class HomeFragment extends BaseFragment implements HomeView{
     }
 
     @Override
-    public void onCategoryClick(String categoryName,int totalProductsInCategory) {
-        presenter.openCategoryProductList(categoryName, totalProductsInCategory);
+    public void onProductClick(Product product) {
+        presenter.openProductDetail(product);
     }
 
     @Override
-    public void openCategoryProductsPage(String categoryId,int totalProductsInCategory) {
-        router.openProductLists(getActivity(), categoryId, totalProductsInCategory);
+    public void openProductDetailPage(Product product) {
+        router.openProductDetails(getActivity(), product.getId());
     }
 
     @Override
@@ -85,36 +89,18 @@ public class HomeFragment extends BaseFragment implements HomeView{
 
     }
 
-
     @Override
-    public void showCategoryList(ArrayList<Category> categories) {
-        //// TODO: 19/8/17 show the category list in recyclerview
+    public void showProductList(ArrayList<Product> products) {
 
     }
 
     @Override
-    public void showCategoryListRetrieveError(int stringId) {
+    public void showProductListRetrieveError(String str) {
 
-        Toast.makeText(getActivity(), getString(stringId), Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void showCategoryListRetrieveError(String string) {
-        Toast.makeText(getActivity(), string, Toast.LENGTH_LONG).show();
-    }
+    public void showProductListRetrieveError(int stringId) {
 
-    @Override
-    public void showSavedCartList(ArrayList<Product> products) {
-        //// TODO: 19/8/17 show the cart items in recyclerview
-    }
-
-    @Override
-    public void showCartRetrieveError(int stringId) {
-        Toast.makeText(getActivity(), getString(stringId), Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void showCartRetrieveError(String string) {
-        Toast.makeText(getActivity(), string, Toast.LENGTH_LONG).show();
     }
 }

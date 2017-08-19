@@ -40,31 +40,27 @@ public class HomePresenterImpl implements HomePresenter{
 
     @Override
     public void showError(String str) {
+        view.showError(str);
+    }
 
+
+    @Override
+    public void openCategoryProductList(String categoryName,int totalProductsInCategory) {
+        view.openCategoryProductsPage(categoryName, totalProductsInCategory);
     }
 
     @Override
-    public void showCartCount(String str) {
-
+    public void showCategoryList(ArrayList<Category> categories) {
+        view.showCategoryList(categories);
     }
 
     @Override
-    public void openCategoryProductList(long categoryId) {
-        view.openCategoryProductsPage(categoryId);
+    public void showCategoryListRetrieveError(int stringId) {
+        view.showCategoryListRetrieveError(stringId);
     }
 
     @Override
-    public void showList(ArrayList<Category> products) {
-        view.showList(products);
-    }
-
-    @Override
-    public void showListRetrieveError(int stringId) {
-        view.showListRetrieveError(stringId);
-    }
-
-    @Override
-    public void showListRetrieveError(String str) {
-        view.showListRetrieveError(str);
+    public void showCategoryListRetrieveError(String str) {
+        view.showCategoryListRetrieveError(str);
     }
 }

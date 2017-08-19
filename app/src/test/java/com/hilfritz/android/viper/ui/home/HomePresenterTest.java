@@ -66,7 +66,7 @@ public class HomePresenterTest extends AndroidTest{
 
         //assert
         verify(view, atLeastOnce()).showLoading();
-        verify(view, atLeastOnce()).showList(sampleCategory);
+        verify(view, atLeastOnce()).showCategoryList(sampleCategory);
         verify(view, atLeastOnce()).hideLoading();
     }
     @Test
@@ -81,8 +81,8 @@ public class HomePresenterTest extends AndroidTest{
 
         //assert
         verify(view, atLeastOnce()).showLoading();
-        verify(view, atLeastOnce()).showListRetrieveError(anyInt());
-        verify(view, never()).showListRetrieveError(anyString());
+        verify(view, atLeastOnce()).showCategoryListRetrieveError(anyInt());
+        verify(view, never()).showCategoryListRetrieveError(anyString());
         verify(view, atLeastOnce()).hideLoading();
     }
     @Test
@@ -101,8 +101,8 @@ public class HomePresenterTest extends AndroidTest{
 
         //assert
         verify(view, atLeastOnce()).showLoading();
-        verify(view, atLeastOnce()).showListRetrieveError(anyString());
-        verify(view, never()).showListRetrieveError(anyInt());
+        verify(view, atLeastOnce()).showCategoryListRetrieveError(anyString());
+        verify(view, never()).showCategoryListRetrieveError(anyInt());
         verify(view, atLeastOnce()).hideLoading();
 
     }

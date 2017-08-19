@@ -57,4 +57,7 @@
     <string name="no_categories">No categories available, please try again later.</string>
     <string name="no_products">No products available, please try again later.</string>
     <string name="something_went_wrong">Something went wrong. Please try again later.</string>
+    <string name="empty_cart">Cart is empty.</string>
+    <string name="title_activity_product_list">ProductListActivity</string>
+    <string name="title_activity_product_detail">ProductDetailActivity</string>
 </resources>

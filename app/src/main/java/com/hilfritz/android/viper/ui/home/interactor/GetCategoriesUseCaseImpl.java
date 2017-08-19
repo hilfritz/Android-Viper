@@ -36,7 +36,7 @@ public class GetCategoriesUseCaseImpl extends AbstractBaseInteractor implements 
                     @Override
                     public void onError(Throwable e) {
                         String message = e.getLocalizedMessage();
-                        presenterCallBack.showListRetrieveError(message);
+                        presenterCallBack.showCategoryListRetrieveError(message);
                         unsubscribe();
                     }
 
@@ -45,10 +45,10 @@ public class GetCategoriesUseCaseImpl extends AbstractBaseInteractor implements 
                         if (categoriesWrapper!=null
                                 && categoriesWrapper.getCategories()!=null
                                 && categoriesWrapper.getCategories().size()>0){
-                            presenterCallBack.showList(categoriesWrapper.getCategories());
+                            presenterCallBack.showCategoryList(categoriesWrapper.getCategories());
                         }else{
                             //empty list
-                            presenterCallBack.showListRetrieveError(R.string.no_categories);
+                            presenterCallBack.showCategoryListRetrieveError(R.string.no_categories);
                         }
                     }
                 });
