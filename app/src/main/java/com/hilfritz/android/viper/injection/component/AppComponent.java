@@ -1,11 +1,11 @@
-package com.hilfritz.android.viper.dagger2.component;
+package com.hilfritz.android.viper.injection.component;
 
 
-import com.hilfritz.android.viper.dagger2.module.CacheModule;
-import com.hilfritz.android.viper.dagger2.module.PresenterModule;
-import com.hilfritz.android.viper.dagger2.module.RestApiModule;
-import com.hilfritz.android.viper.dagger2.module.SessionModule;
-import com.hilfritz.android.viper.dagger2.module.UtilityModule;
+import com.hilfritz.android.viper.injection.module.CacheModule;
+import com.hilfritz.android.viper.injection.module.PresenterModule;
+import com.hilfritz.android.viper.injection.module.RestApiModule;
+import com.hilfritz.android.viper.injection.module.SessionModule;
+import com.hilfritz.android.viper.injection.module.UtilityModule;
 import com.hilfritz.android.viper.ui.home.view.HomeFragment;
 import com.hilfritz.android.viper.ui.place.list.view.PlaceListFragment;
 import com.hilfritz.android.viper.ui.products.detail.view.ProductDetailFragment;

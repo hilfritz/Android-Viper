@@ -2,9 +2,13 @@ package com.hilfritz.android.viper.ui.products.list.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.hilfritz.android.viper.R;
 import com.hilfritz.android.viper.application.MyApplication;
@@ -15,17 +19,22 @@ import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
 import com.hilfritz.android.viper.navigation.Router;
 import com.hilfritz.android.viper.navigation.RouterImpl;
 import com.hilfritz.android.viper.ui.products.list.ProductListPresenter;
+import com.hilfritz.android.viper.ui.products.list.view.adapter.ProductListAdapter;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class ProductListFragment extends BaseFragment implements ProductListView{
+    private static final String TAG = "ProductListFragment";
+    @BindView(R.id.list)
+    RecyclerView list;
 
     View view;
     @Inject
@@ -38,6 +47,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     SephoraProductRepository sephoraProductRepository;
     String categoryName;
     int totalProductsInCategory =0;
+    ProductListAdapter adapter;
 
     public ProductListFragment() {
     }
@@ -47,6 +57,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
         ((MyApplication)getActivity().getApplication()).getAppComponent().inject(this);
         categoryName = getActivity().getIntent().getStringExtra(RouterImpl.EXTRA_CATEGORY_NAME);
         totalProductsInCategory = getActivity().getIntent().getIntExtra(RouterImpl.EXTRA_CATEGORY_TOTAL_PRODUCT_COUNT, 0);
+        Log.d(TAG, "onCreate: categoryName:"+categoryName+" totalProductsInCategory:"+totalProductsInCategory);
     }
 
     @Override
@@ -61,6 +72,15 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         presenter.init(this, threadProvider, sephoraProductRepository, categoryName, totalProductsInCategory);
+
+        //initialize lists
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        list.setLayoutManager(llm);
+
+        adapter = new ProductListAdapter(getActivity(), presenter);
+        list.setAdapter(adapter);
+        presenter.populate();
     }
 
 
@@ -86,21 +106,21 @@ public class ProductListFragment extends BaseFragment implements ProductListView
 
     @Override
     public void showError(String str) {
-
+        Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showProductList(ArrayList<Product> products) {
-
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void showProductListRetrieveError(String str) {
-
+        Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showProductListRetrieveError(int stringId) {
-
+        Toast.makeText(getActivity(), getString(stringId), Toast.LENGTH_SHORT).show();
     }
 }

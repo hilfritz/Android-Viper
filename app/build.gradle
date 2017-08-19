@@ -137,4 +137,5 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     provided 'javax.annotation:jsr250-api:1.0'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    compile 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.0'
 }

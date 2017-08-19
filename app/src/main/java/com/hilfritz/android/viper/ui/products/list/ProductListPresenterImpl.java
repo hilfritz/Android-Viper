@@ -18,12 +18,15 @@ public class ProductListPresenterImpl implements ProductListPresenter {
     SephoraProductRepository sephoraProductRepository;
     ProductListView view;
     GetProductsUseCase getProductsUseCase;
+    ArrayList<Product> list = new ArrayList<>();
 
     @Override
     public void init(ProductListView view, ThreadProvider threadProvider, SephoraProductRepository sephoraProductRepository,String categoryName, int totalProductsInCategory) {
         this.threadProvider = threadProvider;
         this.sephoraProductRepository = sephoraProductRepository;
         this.view = view;
+        list.clear();
+
         getProductsUseCase = new GetProductsUseCaseImpl(
                 threadProvider.getIoThread(),
                 threadProvider.getMainThread(),
@@ -52,7 +55,13 @@ public class ProductListPresenterImpl implements ProductListPresenter {
     }
 
     @Override
+    public ArrayList<Product> getList() {
+        return list;
+    }
+
+    @Override
     public void showProductList(ArrayList<Product> products) {
+        list.addAll(products);
         view.showProductList(products);
     }
 

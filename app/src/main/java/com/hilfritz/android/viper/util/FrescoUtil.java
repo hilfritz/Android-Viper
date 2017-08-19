@@ -125,6 +125,51 @@ public class FrescoUtil {
                 .build();
         image.setController(controller);
     }
+    public static final void loadImage(Uri uri, final SimpleDraweeView image, Context context, int width, int height, final int failImageId){
+        Log.d(TAG, "loadImage: ");
+        ResizeOptions resizeOptions = new ResizeOptions(width, height);
+        ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)
+                .setResizeOptions(resizeOptions)
+                .build();
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setImageRequest(request)
+                .setOldController(image.getController())
+                .setControllerListener(new ControllerListener<ImageInfo>() {
+                    @Override
+                    public void onSubmit(String id, Object callerContext) {
+                        Log.d(TAG, "onSubmit: ");
+                    }
+
+                    @Override
+                    public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
+                        Log.d(TAG, "onFinalImageSet: ");
+                    }
+
+                    @Override
+                    public void onIntermediateImageSet(String id, ImageInfo imageInfo) {
+                        Log.d(TAG, "onIntermediateImageSet: ");
+                    }
+
+                    @Override
+                    public void onIntermediateImageFailed(String id, Throwable throwable) {
+                        Log.d(TAG, "onIntermediateImageFailed: ");
+                    }
+
+                    @Override
+                    public void onFailure(String id, Throwable throwable) {
+                        Log.d(TAG, "onFailure: ");
+                        throwable.printStackTrace();
+                        image.setImageURI(getUriFromDrawableId(failImageId));
+                    }
+
+                    @Override
+                    public void onRelease(String id) {
+                        Log.d(TAG, "onRelease: ");
+                    }
+                })
+                .build();
+        image.setController(controller);
+    }
 
     public static final void loadColorDrawable(SimpleDraweeView image, int color){
         Log.d(TAG, "loadImage: ");

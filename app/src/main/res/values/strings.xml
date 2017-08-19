@@ -60,4 +60,5 @@
     <string name="empty_cart">Cart is empty.</string>
     <string name="title_activity_product_list">ProductListActivity</string>
     <string name="title_activity_product_detail">ProductDetailActivity</string>
+    <string name="label_loading">loading...</string>
 </resources>

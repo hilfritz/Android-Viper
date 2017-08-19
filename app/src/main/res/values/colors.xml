@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="text_color_primary">#343434</color>
+    <color name="text_color_secondary">#565656</color>
+    <color name="color_sale">#aa4444</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="dialog_background">#F1F5F7</color>
+    <color name="white">#ffffff</color>
+    <color name="cart_layout_bg">#ababab</color>
 </resources>

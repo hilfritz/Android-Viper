@@ -1,4 +1,4 @@
-package com.hilfritz.android.viper.dagger2.module;
+package com.hilfritz.android.viper.injection.module;
 
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepositoryImpl;

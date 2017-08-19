@@ -1,3 +1,29 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="category_text_size">12sp</dimen>
+    <dimen name="product_photo_width_height">60dp</dimen>
+    <dimen name="padding_a">5dp</dimen>
+    <dimen name="rounded_corners_a">5dp</dimen>
+    <dimen name="margin_a">5dp</dimen>
+    <dimen name="margin_b">10dp</dimen>
+    <dimen name="margin_c">15dp</dimen>
+    <dimen name="margin_d">20dp</dimen>
+    <dimen name="margin_e">25dp</dimen>
+    <dimen name="margin_f">30dp</dimen>
+    <dimen name="margin_g">35dp</dimen>
+    <dimen name="margin_h">40dp</dimen>
+    <dimen name="margin_i">45dp</dimen>
+    <dimen name="margin_j">50dp</dimen>
+    <dimen name="margin_k">54dp</dimen>
+    <dimen name="margin_l">60dp</dimen>
+    <dimen name="margin_m">65dp</dimen>
+    <dimen name="margin_n">70dp</dimen>
+
+
+    <dimen name="product_list_title_text_size">14sp</dimen>
+    <dimen name="product_list_desc_text_size">12sp</dimen>
+    <dimen name="product_list_price_text_size">11sp</dimen>
+    <dimen name="dialog_text_size">15sp</dimen>
 </resources>

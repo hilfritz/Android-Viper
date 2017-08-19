@@ -1,4 +1,4 @@
-package com.hilfritz.android.viper.dagger2.module;
+package com.hilfritz.android.viper.injection.module;
 
 import com.google.gson.Gson;
 

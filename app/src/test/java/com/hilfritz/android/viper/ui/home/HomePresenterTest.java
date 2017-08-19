@@ -113,16 +113,17 @@ public class HomePresenterTest extends AndroidTest{
         when(sephoraProductRepository.getCategories()).thenReturn(Observable.just(new CategoriesWrapper(sampleCategory)));
         presenter = new HomePresenterImpl();
         presenter.init(view, threadProvider, sephoraProductRepository);
-        long categoryId = 1234;
+        String categoryId = "lipstick";
+        int categoryProductCount = 1234;
 
         //act
         presenter.populate();
         //invoke the click on the category
         //view.onCategoryClick(categoryId);
-        presenter.openCategoryProductList(categoryId);
+        presenter.openCategoryProductList(categoryId, categoryProductCount);
 
         //assert
-        verify(view, atLeastOnce()).openCategoryProductsPage(categoryId);
+        verify(view, atLeastOnce()).openCategoryProductsPage(categoryId, categoryProductCount);
     }
 
 }

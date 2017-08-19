@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/padding_a"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="@dimen/product_photo_width_height"
+        android:layout_height="@dimen/product_photo_width_height"
+        android:id="@+id/image"
+        app:roundedCornerRadius="@dimen/rounded_corners_a"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="@dimen/margin_b"
+        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/image"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_primary"
+            android:id="@+id/name"
+            android:textSize="@dimen/product_list_title_text_size"
+            tools:text="im the name"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_secondary"
+            android:id="@+id/price"
+            android:textSize="@dimen/product_list_title_text_size"
+            tools:text="im the price"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_sale"
+        android:id="@+id/sale"
+        android:textSize="@dimen/product_list_desc_text_size"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        tools:text="Sale!"
+        android:layout_marginRight="@dimen/margin_d"
+        android:textStyle="bold|italic"
+        />
+</RelativeLayout>
