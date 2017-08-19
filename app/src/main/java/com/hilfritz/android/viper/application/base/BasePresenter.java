@@ -5,5 +5,5 @@ package com.hilfritz.android.viper.application.base;
  */
 
 public abstract class BasePresenter {
-
+    abstract void populate();
 }

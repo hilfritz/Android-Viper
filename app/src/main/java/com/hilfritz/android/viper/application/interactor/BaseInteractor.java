@@ -5,11 +5,5 @@ package com.hilfritz.android.viper.application.interactor;
  */
 
 public interface BaseInteractor {
-    /*
-    public void cancel();
-    public void onFinish();
-    public void isCancelled();
-    public void isRunning();
-    */
-    public void run();
+    void run();
 }

@@ -13,6 +13,11 @@ public class Category {
     @Expose
     private Integer productsCount;
 
+    public Category(String name, Integer productsCount) {
+        this.name = name;
+        this.productsCount = productsCount;
+    }
+
     public String getName() {
         return name;
     }

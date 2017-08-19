@@ -1,5 +1,6 @@
-package com.hilfritz.android.viper.ui.home.usecase;
+package com.hilfritz.android.viper.ui.home.interactor;
 
+import com.hilfritz.android.viper.R;
 import com.hilfritz.android.viper.application.interactor.AbstractBaseInteractor;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.category.CategoriesWrapper;
@@ -29,17 +30,26 @@ public class GetCategoriesUseCaseImpl extends AbstractBaseInteractor implements 
                 .subscribe(new Subscriber<CategoriesWrapper>() {
                     @Override
                     public void onCompleted() {
-
+                        unsubscribe();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        String message = e.getLocalizedMessage();
+                        presenterCallBack.showListRetrieveError(message);
+                        unsubscribe();
                     }
 
                     @Override
                     public void onNext(CategoriesWrapper categoriesWrapper) {
-
+                        if (categoriesWrapper!=null
+                                && categoriesWrapper.getCategories()!=null
+                                && categoriesWrapper.getCategories().size()>0){
+                            presenterCallBack.showList(categoriesWrapper.getCategories());
+                        }else{
+                            //empty list
+                            presenterCallBack.showListRetrieveError(R.string.no_categories);
+                        }
                     }
                 });
     }

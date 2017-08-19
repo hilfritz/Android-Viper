@@ -12,6 +12,10 @@ public class CategoriesWrapper {
     @Expose
     private ArrayList<Category> categories = null;
 
+    public CategoriesWrapper(ArrayList<Category> categories) {
+        this.categories = categories;
+    }
+
     public ArrayList<Category> getCategories() {
         return categories;
     }

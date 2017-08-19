@@ -1,5 +1,8 @@
 package com.hilfritz.android.viper.dagger2.module;
 
+import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
+import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepositoryImpl;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -10,12 +13,12 @@ import dagger.Provides;
  */
 @Module
 public class RestApiModule {
-    /*
+
     @Provides
     @Singleton
-    RestApiInterface provideRestApi(){
-        return new RestApiManager();
+    SephoraProductRepository provideSephoraApi(){
+        return new SephoraProductRepositoryImpl();
     }
-    */
+
 
 }

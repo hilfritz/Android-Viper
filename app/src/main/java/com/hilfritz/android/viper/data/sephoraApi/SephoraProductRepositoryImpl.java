@@ -1,6 +1,5 @@
-package com.hilfritz.android.viper.data.sephoraApi.pojo;
+package com.hilfritz.android.viper.data.sephoraApi;
 
-import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.category.CategoriesWrapper;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.ProductDetailsWrapper;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.ProductsListWrapper;
@@ -8,11 +7,10 @@ import com.hilfritz.android.viper.data.sephoraApi.pojo.products.ProductsListWrap
 import rx.Observable;
 
 /**
- * Created by Hilfritz Camallere on 18/8/17.
+ * Created by Hilfritz Camallere on 19/8/17.
  */
 
-public class SephoraProductRepositoryImpl implements SephoraProductRepository{
-    
+public class SephoraProductRepositoryImpl implements SephoraProductRepository {
     @Override
     public Observable<CategoriesWrapper> getCategories() {
         return null;
