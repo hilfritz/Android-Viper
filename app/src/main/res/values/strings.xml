@@ -73,4 +73,8 @@
     <string name="happy_shop_categories">Happy Shop Categories</string>
     <string name="happy_shop">Happy Shop</string>
     <string name="categories">Shop Item Categories</string>
+    <string name="save_cart_title">Save cart items?</string>
+    <string name="save_cart_message">You have items in you cart. Save you cart items for next time or lose them.</string>
+    <string name="save_cart_save">Save &amp; Exit</string>
+    <string name="save_cart_exit">Exit</string>
 </resources>

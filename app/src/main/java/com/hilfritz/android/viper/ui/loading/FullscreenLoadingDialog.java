@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -25,7 +26,7 @@ import com.hilfritz.android.viper.util.RxUtil;
 import com.hilfritz.android.viper.util.StringUtil;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.ThreadMode;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.concurrent.TimeUnit;
 
@@ -79,12 +80,21 @@ public class FullscreenLoadingDialog extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
-        try {
-            EventBus.getDefault().register(this);
-        }catch (Exception e){
-            Log.d(TAG, "onCreate() eventbus registration error: "+e.getLocalizedMessage());
-        }
+
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
 
     /**
      * TO REMOVE THE TITLE SPACE
@@ -154,7 +164,7 @@ public class FullscreenLoadingDialog extends DialogFragment {
 
                             @Override
                             public void onNext(Long aLong) {
-                                Log.d(TAG, "onNext: loading displaying for "+aLong.intValue()+" seconds");
+                                //Log.d(TAG, "onNext: loading displaying for "+aLong.intValue()+" seconds");
                                 if (aLong.intValue() >= DISPLAY_TIMEOUT){
                                     Log.d(TAG, "onNext: emergency dismmiss");
                                     dismissAllowingStateLoss();
@@ -184,7 +194,7 @@ public class FullscreenLoadingDialog extends DialogFragment {
     }
 
 
-    @org.greenrobot.eventbus.Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe
     public void onDialogEvent(DialogEvent e) {
         Log.d(TAG, "onDialogEvent: ");
         if (e.getEventType()==DialogEvent.CLOSE){
@@ -262,18 +272,20 @@ public class FullscreenLoadingDialog extends DialogFragment {
     }
 
     public static final void hideLoading(){
-        DialogEvent.fireEvent(DialogEvent.CLOSE);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                DialogEvent.fireEvent(DialogEvent.CLOSE);
+            }
+        }, 1000);
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy: ");
-        try {
-            EventBus.getDefault().unregister(this);
-        }catch (Exception e){
-            Log.d(TAG, "onDestroy() busprovider registration error: "+e.getLocalizedMessage());
-        }
         RxUtil.unsubscribe(displayTimerTimeoutSubscription);
     }
 

@@ -17,6 +17,7 @@ import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
 import com.hilfritz.android.viper.navigation.Router;
 import com.hilfritz.android.viper.navigation.RouterImpl;
+import com.hilfritz.android.viper.ui.loading.FullscreenLoadingDialog;
 import com.hilfritz.android.viper.ui.products.list.ProductListPresenter;
 import com.hilfritz.android.viper.ui.products.list.view.adapter.ProductListAdapter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -102,12 +103,14 @@ public class ProductListFragment extends BaseFragment implements ProductListView
 
     @Override
     public void showLoading() {
-
+        Log.d(TAG, "showLoading: ");
+        FullscreenLoadingDialog.showLoading(getChildFragmentManager());
     }
 
     @Override
     public void hideLoading() {
-
+        Log.d(TAG, "hideLoading: ");
+        FullscreenLoadingDialog.hideLoading();
     }
 
     @Override

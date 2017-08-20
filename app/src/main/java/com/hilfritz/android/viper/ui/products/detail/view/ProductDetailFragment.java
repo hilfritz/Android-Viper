@@ -3,6 +3,7 @@ package com.hilfritz.android.viper.ui.products.detail.view;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
 import com.hilfritz.android.viper.navigation.Router;
 import com.hilfritz.android.viper.navigation.RouterImpl;
+import com.hilfritz.android.viper.ui.loading.FullscreenLoadingDialog;
 import com.hilfritz.android.viper.ui.products.detail.ProductDetailPresenter;
 import com.hilfritz.android.viper.util.FrescoUtil;
 
@@ -96,12 +98,14 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
 
     @Override
     public void showLoading() {
-
+        Log.d(TAG, "showLoading: ");
+        FullscreenLoadingDialog.showLoading(getChildFragmentManager());
     }
 
     @Override
     public void hideLoading() {
-
+        Log.d(TAG, "hideLoading: ");
+        FullscreenLoadingDialog.hideLoading();
     }
 
     @Override

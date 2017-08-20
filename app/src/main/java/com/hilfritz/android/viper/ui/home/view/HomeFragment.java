@@ -1,7 +1,9 @@
 package com.hilfritz.android.viper.ui.home.view;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +20,7 @@ import com.hilfritz.android.viper.application.MyApplication;
 import com.hilfritz.android.viper.application.base.BaseFragment;
 import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.data.cartRepository.CartManager;
+import com.hilfritz.android.viper.data.eventbus.BackButtonEvent;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.category.Category;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
@@ -26,6 +29,9 @@ import com.hilfritz.android.viper.ui.home.HomePresenter;
 import com.hilfritz.android.viper.ui.home.view.adapters.CartListAdapter;
 import com.hilfritz.android.viper.ui.home.view.adapters.CategoryListAdapter;
 import com.hilfritz.android.viper.ui.loading.FullscreenLoadingDialog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 
@@ -133,7 +139,7 @@ public class HomeFragment extends BaseFragment implements HomeView{
     @Override
     public void showLoading() {
         Log.d(TAG, "showLoading: ");
-        //FullscreenLoadingDialog.showLoading(getFragmentManager());
+        FullscreenLoadingDialog.showLoading(getChildFragmentManager());
     }
 
     @Override
@@ -158,10 +164,18 @@ public class HomeFragment extends BaseFragment implements HomeView{
     }
 
 
+
     @Override
     public void onResume() {
         super.onResume();
+
         presenter.populateCart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
     }
 
     @Override
@@ -202,4 +216,64 @@ public class HomeFragment extends BaseFragment implements HomeView{
     public void showCartRetrieveError(String string) {
         Toast.makeText(getActivity(), string, Toast.LENGTH_LONG).show();
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onBackPressed(BackButtonEvent event){
+        if (event==null){
+            Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //show save cart dialog
+        if (cartManager.getProductsInCart().size()>0) {
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    getActivity());
+
+            // set title
+            alertDialogBuilder.setTitle(getString(R.string.save_cart_title));
+
+            // set dialog message
+            alertDialogBuilder
+                    .setMessage(getString(R.string.save_cart_message))
+                    .setCancelable(false)
+                    .setPositiveButton(getString(R.string.save_cart_save), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // if this button is clicked, close
+                            // current activity
+                            cartManager.save();
+                            dialog.cancel();
+                            getActivity().finish();
+                        }
+                    })
+                    .setNegativeButton(getString(R.string.save_cart_exit), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            cartManager.clear();
+                            dialog.cancel();
+                            getActivity().finish();
+                        }
+                    });
+
+            // create alert dialog
+            AlertDialog alertDialog = alertDialogBuilder.create();
+
+            // show it
+            alertDialog.show();
+        }else{
+            //just close
+            getActivity().finish();
+        }
+    }
+
 }

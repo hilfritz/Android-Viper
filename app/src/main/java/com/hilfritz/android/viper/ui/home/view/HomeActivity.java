@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.hilfritz.android.viper.R;
+import com.hilfritz.android.viper.data.eventbus.BackButtonEvent;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -18,4 +19,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        BackButtonEvent.fireBackButtonPressedEvent();
+    }
 }
