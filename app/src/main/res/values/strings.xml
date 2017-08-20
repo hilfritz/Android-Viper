@@ -63,4 +63,9 @@
     <string name="label_loading">loading...</string>
     <string name="on_sale">On Sale!</string>
     <string name="price_holder">$ </string>
+
+    <string name="add_to_cart"> Add To Cart </string>
+    <string name="remove_from_cart"> Remove From Cart </string>
+    <string name="added">Item added to your cart.</string>
+    <string name="removed">Item removed from cart.</string>
 </resources>

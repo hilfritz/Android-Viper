@@ -24,7 +24,7 @@ public interface SephoraProductRepository {
             @Query("category") String cateogry);
 
     @GET(SephoraApiConstants.PRODUCT_DETAIL_URL)
-    Observable<ProductDetailsWrapper> getProductsById(@Path("id") long id);
+    Observable<ProductDetailsWrapper> getProductById(@Path("id") long id);
 
 
 }

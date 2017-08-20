@@ -15,4 +15,5 @@ public interface CartManager {
     Product insertProductToCart(Product product);
     int getCartSize();
     void clear();
+    void save();
 }

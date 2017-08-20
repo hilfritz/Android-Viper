@@ -24,7 +24,7 @@ public class SephoraProductRepositoryImpl implements SephoraProductRepository{
     }
 
     @Override
-    public Observable<ProductDetailsWrapper> getProductsById(long id) {
+    public Observable<ProductDetailsWrapper> getProductById(long id) {
         return null;
     }
 }

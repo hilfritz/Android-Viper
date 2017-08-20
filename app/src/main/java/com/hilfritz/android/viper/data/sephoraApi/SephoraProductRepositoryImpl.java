@@ -58,7 +58,7 @@ public class SephoraProductRepositoryImpl implements SephoraProductRepository {
     }
 
     @Override
-    public Observable<ProductDetailsWrapper> getProductsById(long id) {
-        return getApi().getProductsById(id);
+    public Observable<ProductDetailsWrapper> getProductById(long id) {
+        return getApi().getProductById(id);
     }
 }

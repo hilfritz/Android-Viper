@@ -60,6 +60,12 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         }catch (Exception e){
             holder.image.setImageURI(FrescoUtil.getUriFromDrawableId(R.drawable.image_not_available));
         }
+        holder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.openProductDetail(product);
+            }
+        });
     }
 
     @Override

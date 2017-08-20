@@ -3,6 +3,7 @@ package com.hilfritz.android.viper.navigation;
 import android.content.Context;
 import android.content.Intent;
 
+import com.hilfritz.android.viper.ui.products.detail.view.ProductDetailActivity;
 import com.hilfritz.android.viper.ui.products.list.view.ProductListActivity;
 
 /**
@@ -24,7 +25,7 @@ public class RouterImpl implements Router{
 
     @Override
     public void openProductDetails(Context context, long productId) {
-        Intent intent = new Intent(context, ProductListActivity.class);
+        Intent intent = new Intent(context, ProductDetailActivity.class);
         intent.putExtra(EXTRA_PRODUCT_ID, productId);
         context.startActivity(intent);
     }

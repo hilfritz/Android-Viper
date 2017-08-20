@@ -24,6 +24,9 @@ public class Product {
     @SerializedName("under_sale")
     @Expose
     private Boolean underSale;
+    @SerializedName("description")
+    @Expose
+    private String description;
 
     private int numberOfOrder = 0;
 
@@ -88,4 +91,14 @@ public class Product {
     public void setNumberOfOrder(int numberOfOrder) {
         this.numberOfOrder = numberOfOrder;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
 }

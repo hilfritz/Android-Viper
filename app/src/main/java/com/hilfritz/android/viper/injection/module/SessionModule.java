@@ -48,7 +48,7 @@ public class SessionModule {
     @Singleton
     @Provides
     CartManager provideCartManager(){
-        return new CartManagerImpl();
+        return new CartManagerImpl(myApplication);
     }
 
 

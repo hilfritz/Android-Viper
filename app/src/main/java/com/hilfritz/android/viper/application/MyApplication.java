@@ -2,10 +2,11 @@ package com.hilfritz.android.viper.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.multidex.MultiDex;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-
 import com.hilfritz.android.viper.BuildConfig;
 import com.hilfritz.android.viper.injection.component.AppComponent;
 import com.hilfritz.android.viper.injection.component.DaggerAppComponent;
@@ -27,6 +28,8 @@ import timber.log.Timber;
 public class MyApplication extends Application {
     AppComponent appComponent;
     //private static MyApplication mInstance;
+    private SharedPreferences prefs;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -35,6 +38,7 @@ public class MyApplication extends Application {
         initializeDagger();
         Fresco.initialize(this);
         initializeTimber();
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     private void initializeLeakCanary(){
@@ -81,5 +85,8 @@ public class MyApplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+    }
+    public SharedPreferences getPrefs() {
+        return prefs;
     }
 }

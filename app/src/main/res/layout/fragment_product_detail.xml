@@ -1,11 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hilfritz.android.viper.ui.products.detail.view.ProductDetailFragment"
-    tools:showIn="@layout/activity_product_detail">
+    tools:showIn="@layout/activity_product_detail"
+
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_c"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="@dimen/product_detail_image_width_height"
+                android:layout_height="@dimen/product_detail_image_width_height"
+                android:id="@+id/image"
+                android:background="#898989"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/product_list_title_text_size2"
+                android:id="@+id/name"
+                android:layout_marginLeft="@dimen/margin_c"
+                android:layout_marginRight="@dimen/margin_c"
+                android:layout_marginTop="@dimen/margin_c"
+                tools:text="name"
+                />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_c"
+                android:layout_marginRight="@dimen/margin_c"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_secondary"
+                    android:textSize="@dimen/product_list_price_text_size2"
+                    android:id="@+id/price"
+                    tools:text="price"
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="right"
+                    tools:text="on sale"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_sale"
+                    android:textSize="@dimen/product_list_price_text_size2"
+                    android:id="@+id/sale"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color_primary"
+                android:textSize="@dimen/product_list_desc_text_size2"
+                android:id="@+id/desc"
+                android:layout_margin="@dimen/margin_d"
+                tools:text="sfalkdfjslkdf sdfljslafjslkdf sldfjlskdjfs flsdkjfklsdjf sldfjsldkfj sldfjksldkfj sldfjsldkjf"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_to_cart"
+                android:id="@+id/add_to_cart_btn"
+                android:visibility="gone"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/remove_from_cart"
+                android:id="@+id/remove_from_cart_btn"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+    </ScrollView>
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
