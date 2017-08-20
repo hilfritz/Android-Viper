@@ -122,7 +122,7 @@ public class ProductDetailFragment extends BaseFragment implements ProductDetail
                     dimensionPixelSize,
                     dimensionPixelSize);
         }
-
+        ((ProductDetailActivity)getActivity()).setTitleBarTitle(product.getName());
         name.setText(product.getName());
         price.setText(getString(R.string.price_holder)+product.getPrice());
         if (product.getUnderSale()){

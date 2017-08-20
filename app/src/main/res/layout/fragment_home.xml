@@ -22,39 +22,15 @@
     <com.chauthai.swipereveallayout.SwipeRevealLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:mode="same_level"
-        app:dragEdge="bottom"
+        app:mode="normal"
+        app:dragEdge="right"
         android:id="@+id/swipe_reveal_layout"
         >
 
         <!-- secondary layout/hidden layout -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/cart_layout"
-            android:background="@color/cart_layout_bg"
-            >
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/cart_list"
-                />
-        </RelativeLayout>
+        <include layout="@layout/home_secondary_layout" />
         <!-- primary layout -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/content_layout"
-            >
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/category_list"
-                >
-
-            </android.support.v7.widget.RecyclerView>
-
-        </RelativeLayout>
+        <include layout="@layout/home_primary_layout" />
 
     </com.chauthai.swipereveallayout.SwipeRevealLayout>
 

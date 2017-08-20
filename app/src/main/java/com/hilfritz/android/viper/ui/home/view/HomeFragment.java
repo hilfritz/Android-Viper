@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
@@ -15,6 +17,7 @@ import com.hilfritz.android.viper.R;
 import com.hilfritz.android.viper.application.MyApplication;
 import com.hilfritz.android.viper.application.base.BaseFragment;
 import com.hilfritz.android.viper.application.thread.ThreadProvider;
+import com.hilfritz.android.viper.data.cartRepository.CartManager;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.category.Category;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
@@ -43,9 +46,16 @@ public class HomeFragment extends BaseFragment implements HomeView{
     @BindView(R.id.cart_list)
     RecyclerView cartList;
 
+    @BindView(R.id.back_btn)
+    ImageView backBtn;
+
+
 
     @BindView(R.id.swipe_reveal_layout)
     SwipeRevealLayout swipeRevealLayout;
+
+    @BindView(R.id.cart_status)
+    TextView cartStatus;
 
     CategoryListAdapter categoryListAdapter;
     CartListAdapter cartListAdapter;
@@ -58,6 +68,8 @@ public class HomeFragment extends BaseFragment implements HomeView{
     ThreadProvider threadProvider;
     @Inject
     Router router;
+    @Inject
+    CartManager cartManager;
     @Inject
     SephoraProductRepository sephoraProductRepository;
 
@@ -100,8 +112,21 @@ public class HomeFragment extends BaseFragment implements HomeView{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.init(this, threadProvider, sephoraProductRepository);
+        presenter.init(this, threadProvider, sephoraProductRepository, cartManager);
         initializeLists();
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeRevealLayout.close(true);
+            }
+        });
+
+        ((ViewGroup)cartStatus.getParent()).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeRevealLayout.open(true);
+            }
+        });
         presenter.populate();
     }
 
@@ -134,6 +159,12 @@ public class HomeFragment extends BaseFragment implements HomeView{
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+        presenter.populateCart();
+    }
+
+    @Override
     public void showCategoryList(ArrayList<Category> categories) {
         Log.d(TAG, "showCategoryList: ");
         swipeRevealLayout.close(false);
@@ -152,13 +183,19 @@ public class HomeFragment extends BaseFragment implements HomeView{
 
     @Override
     public void showSavedCartList(ArrayList<Product> products) {
-        swipeRevealLayout.open(true);
+        swipeRevealLayout.setLockDrag(false);
+        cartStatus.setText(getString(R.string.cart_not_empty, products.size()+""));
         cartListAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void showCartRetrieveError(int stringId) {
-        Toast.makeText(getActivity(), getString(stringId), Toast.LENGTH_LONG).show();
+        if (stringId==R.string.empty_cart){
+            cartStatus.setText(getString(R.string.empty_cart));
+            swipeRevealLayout.setLockDrag(true);
+        }else {
+            Toast.makeText(getActivity(), getString(stringId), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

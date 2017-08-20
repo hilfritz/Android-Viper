@@ -1,6 +1,7 @@
 package com.hilfritz.android.viper.ui.home.view.adapters;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,11 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
                 presenter.openCategoryProductList(category.getName(), category.getProductsCount());
             }
         });
+        if (position%2==0) {
+            holder.root.setBackground(ContextCompat.getDrawable(context, R.drawable.list_item_selector1));
+        }else{
+            holder.root.setBackground(ContextCompat.getDrawable(context, R.drawable.list_item_selector1_darker));
+        }
     }
 
     @Override

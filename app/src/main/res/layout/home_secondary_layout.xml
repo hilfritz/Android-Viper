@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cart_layout"
+    android:background="@color/white">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_l"
+            android:src="@drawable/happy_shop_img"
+            android:scaleType="centerCrop"
+            android:layout_below="@+id/back_btn"
+            />
+        <ImageView
+            android:layout_width="@dimen/margin_k"
+            android:layout_height="@dimen/margin_k"
+            android:src="@drawable/happy_shop_logo"
+            android:layout_alignParentRight="true"
+            android:id="@+id/shop_img"
+            />
+
+
+        <ImageView
+            android:layout_width="@dimen/margin_e"
+            android:layout_height="@dimen/margin_e"
+            android:src="@drawable/backspace_outline"
+            android:alpha="0.6"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/back_btn"
+            android:layout_marginLeft="@dimen/margin_a"
+            android:layout_marginTop="@dimen/margin_a"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/category_text_size"
+            android:text="@string/swipe_left_to_catogory"
+            android:textColor="@color/text_color_primary"
+            android:id="@+id/swipe_right"
+            android:layout_toRightOf="@id/back_btn"
+            android:layout_marginTop="@dimen/margin_b"
+             />
+
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_a"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/product_list_title_text_size"
+            android:text="Items in your cart:"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_color_secondary"
+            android:id="@+id/cart_items_label"
+            android:layout_toRightOf="@+id/cart_icon"
+            android:layout_marginRight="@dimen/margin_a" />
+
+        <ImageView
+            android:layout_width="@dimen/margin_e"
+            android:layout_height="@dimen/margin_e"
+            android:src="@drawable/shopping_cart"
+            android:alpha="0.7"
+            android:id="@+id/cart_icon" />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey1"
+        android:layout_marginTop="@dimen/margin_a"
+        />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cart_list" />
+</LinearLayout>

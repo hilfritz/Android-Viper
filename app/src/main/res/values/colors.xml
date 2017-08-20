@@ -4,7 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-
+    <color name="accent">#00C4A0</color>
+    <color name="list_item_odd_active">#f0faf2</color>
+    <color name="list_item_odd_pressed">@color/home_generic_button_selected_color</color> <!-- e9eeec -->
+    <color name="list_item_even_active">#fafffd</color>
+    <color name="list_item_even_pressed">@color/home_generic_button_selected_color</color>
+    <color name="payslip_green_dark">#086b71</color>
 
     <color name="text_color_primary">#343434</color>
     <color name="text_color_secondary">#565656</color>
@@ -12,5 +17,14 @@
     <color name="transparent">@android:color/transparent</color>
     <color name="dialog_background">#F1F5F7</color>
     <color name="white">#ffffff</color>
-    <color name="cart_layout_bg">#ababab</color>
+    <color name="cart_layout_bg">#dedede</color>
+    <color name="bg1">#bcbcbc</color>
+
+    <color name="list_item_even">#FFFFFF</color>
+    <color name="list_item_odd">#eeeeee</color>
+    <color name="grey1">#eeeeee</color>
+    <color name="grey2">#cccccc</color>
+    <color name="notification_green_bubble">#00C4A0</color>
+    <color name="home_generic_button_selected_color">#2600C4A0</color>
+    <color name="home_generic_button_selected_color_dark">#3700C4A0</color>
 </resources>

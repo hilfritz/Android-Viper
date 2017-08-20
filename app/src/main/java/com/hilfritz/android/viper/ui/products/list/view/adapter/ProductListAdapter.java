@@ -66,6 +66,12 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 presenter.openProductDetail(product);
             }
         });
+
+        if (position%2==0){
+            holder.root.setBackgroundResource(R.drawable.list_item_selector1);
+        }else{
+            holder.root.setBackgroundResource(R.drawable.list_item_selector1_darker);
+        }
     }
 
     @Override

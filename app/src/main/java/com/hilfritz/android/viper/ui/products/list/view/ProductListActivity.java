@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.hilfritz.android.viper.R;
+import com.hilfritz.android.viper.navigation.RouterImpl;
 
 
 public class ProductListActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class ProductListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getIntent().getStringExtra(RouterImpl.EXTRA_CATEGORY_NAME));
 
     }
 

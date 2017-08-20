@@ -17,5 +17,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
     }
+    public void setTitleBarTitle(String str){
+        getSupportActionBar().setTitle(str);
+    }
 
 }
