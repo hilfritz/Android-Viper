@@ -82,7 +82,7 @@ public class FrescoUtil {
     */
 
     public static final void loadImage(Uri uri, SimpleDraweeView image, Context context, int width, int height){
-        Log.d(TAG, "loadImage: ");
+        //Log.d(TAG, "loadImage: ");
         ResizeOptions resizeOptions = new ResizeOptions(width, height);
         ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)
                 .setResizeOptions(resizeOptions)
@@ -93,40 +93,40 @@ public class FrescoUtil {
                 .setControllerListener(new ControllerListener<ImageInfo>() {
                     @Override
                     public void onSubmit(String id, Object callerContext) {
-                        Log.d(TAG, "onSubmit: ");
+                        //Log.d(TAG, "onSubmit: ");
                     }
 
                     @Override
                     public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                        Log.d(TAG, "onFinalImageSet: ");
+                        //Log.d(TAG, "onFinalImageSet: ");
                     }
 
                     @Override
                     public void onIntermediateImageSet(String id, ImageInfo imageInfo) {
-                        Log.d(TAG, "onIntermediateImageSet: ");
+                        //Log.d(TAG, "onIntermediateImageSet: ");
                     }
 
                     @Override
                     public void onIntermediateImageFailed(String id, Throwable throwable) {
-                        Log.d(TAG, "onIntermediateImageFailed: ");
+                        //Log.d(TAG, "onIntermediateImageFailed: ");
                     }
 
                     @Override
                     public void onFailure(String id, Throwable throwable) {
-                        Log.d(TAG, "onFailure: ");
+                        //Log.d(TAG, "onFailure: ");
                         throwable.printStackTrace();
                     }
 
                     @Override
                     public void onRelease(String id) {
-                        Log.d(TAG, "onRelease: ");
+                        //Log.d(TAG, "onRelease: ");
                     }
                 })
                 .build();
         image.setController(controller);
     }
     public static final void loadImage(Uri uri, final SimpleDraweeView image, Context context, int width, int height, final int failImageId){
-        Log.d(TAG, "loadImage: ");
+        //Log.d(TAG, "loadImage: ");
         ResizeOptions resizeOptions = new ResizeOptions(width, height);
         ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)
                 .setResizeOptions(resizeOptions)
@@ -137,27 +137,27 @@ public class FrescoUtil {
                 .setControllerListener(new ControllerListener<ImageInfo>() {
                     @Override
                     public void onSubmit(String id, Object callerContext) {
-                        Log.d(TAG, "onSubmit: ");
+                        //Log.d(TAG, "onSubmit: ");
                     }
 
                     @Override
                     public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                        Log.d(TAG, "onFinalImageSet: ");
+                        //Log.d(TAG, "onFinalImageSet: ");
                     }
 
                     @Override
                     public void onIntermediateImageSet(String id, ImageInfo imageInfo) {
-                        Log.d(TAG, "onIntermediateImageSet: ");
+                        //Log.d(TAG, "onIntermediateImageSet: ");
                     }
 
                     @Override
                     public void onIntermediateImageFailed(String id, Throwable throwable) {
-                        Log.d(TAG, "onIntermediateImageFailed: ");
+                        //Log.d(TAG, "onIntermediateImageFailed: ");
                     }
 
                     @Override
                     public void onFailure(String id, Throwable throwable) {
-                        Log.d(TAG, "onFailure: ");
+                        //Log.d(TAG, "onFailure: ");
                         throwable.printStackTrace();
                         image.setImageURI(getUriFromDrawableId(failImageId));
                     }
@@ -181,32 +181,32 @@ public class FrescoUtil {
                 .setControllerListener(new ControllerListener<ImageInfo>() {
                     @Override
                     public void onSubmit(String id, Object callerContext) {
-                        Log.d(TAG, "onSubmit: ");
+                        //Log.d(TAG, "onSubmit: ");
                     }
 
                     @Override
                     public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                        Log.d(TAG, "onFinalImageSet: ");
+                        //Log.d(TAG, "onFinalImageSet: ");
                     }
 
                     @Override
                     public void onIntermediateImageSet(String id, ImageInfo imageInfo) {
-                        Log.d(TAG, "onIntermediateImageSet: ");
+                        //Log.d(TAG, "onIntermediateImageSet: ");
                     }
 
                     @Override
                     public void onIntermediateImageFailed(String id, Throwable throwable) {
-                        Log.d(TAG, "onIntermediateImageFailed: ");
+                        //Log.d(TAG, "onIntermediateImageFailed: ");
                     }
 
                     @Override
                     public void onFailure(String id, Throwable throwable) {
-                        Log.d(TAG, "onFailure: ");
+                        //Log.d(TAG, "onFailure: ");
                     }
 
                     @Override
                     public void onRelease(String id) {
-                        Log.d(TAG, "onRelease: ");
+                        //Log.d(TAG, "onRelease: ");
                     }
                 })
                 .build();
@@ -214,39 +214,39 @@ public class FrescoUtil {
     }
 
     public static final void loadSimpleDraweeViewImage(SimpleDraweeView image, Uri uri){
-        Log.d(TAG, "loadHeaderImage: ");
+        //Log.d(TAG, "loadHeaderImage: ");
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setUri(uri)
                 .setOldController(image.getController())
                 .setControllerListener(new ControllerListener<ImageInfo>() {
                     @Override
                     public void onSubmit(String id, Object callerContext) {
-                        Log.d(TAG, "onSubmit: ");
+                        //Log.d(TAG, "onSubmit: ");
                     }
 
                     @Override
                     public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                        Log.d(TAG, "onFinalImageSet: ");
+                        //Log.d(TAG, "onFinalImageSet: ");
                     }
 
                     @Override
                     public void onIntermediateImageSet(String id, ImageInfo imageInfo) {
-                        Log.d(TAG, "onIntermediateImageSet: ");
+                        //Log.d(TAG, "onIntermediateImageSet: ");
                     }
 
                     @Override
                     public void onIntermediateImageFailed(String id, Throwable throwable) {
-                        Log.d(TAG, "onIntermediateImageFailed: ");
+                        //Log.d(TAG, "onIntermediateImageFailed: ");
                     }
 
                     @Override
                     public void onFailure(String id, Throwable throwable) {
-                        Log.d(TAG, "onFailure: ");
+                        //Log.d(TAG, "onFailure: ");
                     }
 
                     @Override
                     public void onRelease(String id) {
-                        Log.d(TAG, "onRelease: ");
+                        //Log.d(TAG, "onRelease: ");
                     }
                 })
                 .build();

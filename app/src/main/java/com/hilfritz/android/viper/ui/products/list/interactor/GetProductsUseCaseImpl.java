@@ -3,7 +3,10 @@ package com.hilfritz.android.viper.ui.products.list.interactor;
 import com.hilfritz.android.viper.R;
 import com.hilfritz.android.viper.application.interactor.AbstractBaseInteractor;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
+import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.ProductsListWrapper;
+
+import java.util.ArrayList;
 
 import rx.Scheduler;
 import rx.Subscriber;
@@ -67,7 +70,7 @@ public class GetProductsUseCaseImpl extends AbstractBaseInteractor implements Ge
                         }else {
                             //empty list
                             if (loadedCounter==totalProductsInCategory){
-
+                                presenterCallBack.showProductList(new ArrayList<Product>());
                             }else{
                                 presenterCallBack.showProductListRetrieveError(R.string.something_went_wrong);
                             }

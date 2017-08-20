@@ -60,6 +60,11 @@ public class ProductListPresenterImpl implements ProductListPresenter {
     }
 
     @Override
+    public void loadMore() {
+        getProductsUseCase.run();
+    }
+
+    @Override
     public void showProductList(ArrayList<Product> products) {
         list.addAll(products);
         view.showProductList(products);
@@ -73,5 +78,10 @@ public class ProductListPresenterImpl implements ProductListPresenter {
     @Override
     public void showProductListRetrieveError(int stringId) {
         view.showProductListRetrieveError(stringId);
+    }
+
+    @Override
+    public void loadMoreFinish() {
+        view.loadMoreFinish();
     }
 }

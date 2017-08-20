@@ -41,9 +41,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Product product = presenter.getList().get(position);
         holder.name.setText(product.getName());
-        holder.price.setText("$ "+product.getPrice());
+        holder.price.setText(context.getString(R.string.price_holder)+product.getPrice());
         if (product.getUnderSale()){
-            holder.sale.setText("On sale!");
+            holder.sale.setText(R.string.on_sale);
         }else{
             holder.sale.setText("");
         }

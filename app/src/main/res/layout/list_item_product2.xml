@@ -19,7 +19,9 @@
         android:layout_toRightOf="@id/image"
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/sale"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +35,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_color_secondary"
             android:id="@+id/price"
-            android:textSize="@dimen/product_list_title_text_size"
+            android:textSize="@dimen/product_list_price_text_size"
             tools:text="im the price"
             />
     </LinearLayout>

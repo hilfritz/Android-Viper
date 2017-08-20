@@ -61,4 +61,6 @@
     <string name="title_activity_product_list">ProductListActivity</string>
     <string name="title_activity_product_detail">ProductDetailActivity</string>
     <string name="label_loading">loading...</string>
+    <string name="on_sale">On Sale!</string>
+    <string name="price_holder">$ </string>
 </resources>

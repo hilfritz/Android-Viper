@@ -3,7 +3,6 @@ package com.hilfritz.android.viper.ui.products.list.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +19,7 @@ import com.hilfritz.android.viper.navigation.Router;
 import com.hilfritz.android.viper.navigation.RouterImpl;
 import com.hilfritz.android.viper.ui.products.list.ProductListPresenter;
 import com.hilfritz.android.viper.ui.products.list.view.adapter.ProductListAdapter;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ import butterknife.ButterKnife;
 public class ProductListFragment extends BaseFragment implements ProductListView{
     private static final String TAG = "ProductListFragment";
     @BindView(R.id.list)
-    RecyclerView list;
+    XRecyclerView list;
 
     View view;
     @Inject
@@ -58,6 +58,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
         categoryName = getActivity().getIntent().getStringExtra(RouterImpl.EXTRA_CATEGORY_NAME);
         totalProductsInCategory = getActivity().getIntent().getIntExtra(RouterImpl.EXTRA_CATEGORY_TOTAL_PRODUCT_COUNT, 0);
         Log.d(TAG, "onCreate: categoryName:"+categoryName+" totalProductsInCategory:"+totalProductsInCategory);
+
     }
 
     @Override
@@ -74,12 +75,27 @@ public class ProductListFragment extends BaseFragment implements ProductListView
         presenter.init(this, threadProvider, sephoraProductRepository, categoryName, totalProductsInCategory);
 
         //initialize lists
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        final LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         list.setLayoutManager(llm);
 
+
+
         adapter = new ProductListAdapter(getActivity(), presenter);
         list.setAdapter(adapter);
+        list.setPullRefreshEnabled(false);
+        list.setLoadingMoreEnabled(true);
+        list.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+
+            }
+
+            @Override
+            public void onLoadMore() {
+                loadMore();
+            }
+        });
         presenter.populate();
     }
 
@@ -112,15 +128,30 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     @Override
     public void showProductList(ArrayList<Product> products) {
         adapter.notifyDataSetChanged();
+        list.loadMoreComplete();
     }
 
     @Override
     public void showProductListRetrieveError(String str) {
         Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
+        list.loadMoreComplete();
     }
 
     @Override
     public void showProductListRetrieveError(int stringId) {
         Toast.makeText(getActivity(), getString(stringId), Toast.LENGTH_SHORT).show();
+        list.loadMoreComplete();
     }
+
+    @Override
+    public void loadMoreFinish() {
+        list.loadMoreComplete();
+    }
+
+    @Override
+    public void loadMore() {
+        Log.d(TAG, "loadMore: ");
+        presenter.loadMore();
+    }
+
 }
