@@ -1,5 +1,6 @@
 package com.hilfritz.android.viper.data.cartRepository;
 
+import com.hilfritz.AndroidTest;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
 
 import org.junit.After;
@@ -13,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by Hilfritz Camallere on 18/8/17.
  */
-public class CartManagerTest {
+public class CartManagerTest extends AndroidTest{
     CartManager cartManager;
 
     @Before

@@ -2,6 +2,7 @@ package com.hilfritz.android.viper.ui.home;
 
 import com.hilfritz.AndroidTest;
 import com.hilfritz.android.viper.application.thread.ThreadProvider;
+import com.hilfritz.android.viper.data.cartRepository.CartManager;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.category.CategoriesWrapper;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.category.Category;
@@ -33,6 +34,7 @@ public class HomePresenterTest extends AndroidTest{
     SephoraProductRepository sephoraProductRepository;
     ThreadProvider threadProvider;
     HomePresenter presenter;
+    CartManager cartManager;
 
     ArrayList<Category> sampleCategory =
             new ArrayList<>(Arrays.asList(new Category("lipstick", 100), new Category("eyeliners",200), new Category("powder", 150)));
@@ -44,6 +46,7 @@ public class HomePresenterTest extends AndroidTest{
         view = mock(HomeView.class);
         sephoraProductRepository =mock(SephoraProductRepository.class);
         threadProvider = mock (ThreadProvider.class);
+        cartManager = mock (CartManager.class);
 
         when(threadProvider.getIoThread()).thenReturn(Schedulers.trampoline());
         when(threadProvider.getMainThread()).thenReturn(Schedulers.trampoline());
@@ -59,7 +62,7 @@ public class HomePresenterTest extends AndroidTest{
         //init
         when(sephoraProductRepository.getCategories()).thenReturn(Observable.just(new CategoriesWrapper(sampleCategory)));
         presenter = new HomePresenterImpl();
-        presenter.init(view, threadProvider, sephoraProductRepository);
+        presenter.init(view, threadProvider, sephoraProductRepository, cartManager);
 
         //act
         presenter.populate();
@@ -74,7 +77,7 @@ public class HomePresenterTest extends AndroidTest{
         //init
         when(sephoraProductRepository.getCategories()).thenReturn(Observable.just(new CategoriesWrapper(emptyCategoryList)));
         presenter = new HomePresenterImpl();
-        presenter.init(view, threadProvider, sephoraProductRepository);
+        presenter.init(view, threadProvider, sephoraProductRepository,  cartManager);
 
         //act
         presenter.populate();
@@ -94,7 +97,7 @@ public class HomePresenterTest extends AndroidTest{
         when(sephoraProductRepository.getCategories()).thenReturn(Observable.<CategoriesWrapper>error(damnException));
 
         presenter = new HomePresenterImpl();
-        presenter.init(view, threadProvider, sephoraProductRepository);
+        presenter.init(view, threadProvider, sephoraProductRepository,  cartManager);
 
         //act
         presenter.populate();
@@ -112,7 +115,7 @@ public class HomePresenterTest extends AndroidTest{
         //init
         when(sephoraProductRepository.getCategories()).thenReturn(Observable.just(new CategoriesWrapper(sampleCategory)));
         presenter = new HomePresenterImpl();
-        presenter.init(view, threadProvider, sephoraProductRepository);
+        presenter.init(view, threadProvider, sephoraProductRepository, cartManager);
         String categoryId = "lipstick";
         int categoryProductCount = 1234;
 

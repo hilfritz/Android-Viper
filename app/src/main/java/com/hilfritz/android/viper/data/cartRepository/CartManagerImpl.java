@@ -20,6 +20,9 @@ public class CartManagerImpl implements CartManager{
     private static final String CART_ITEMS_TAG = "cartItems";
     MyApplication myApplication;
 
+    public CartManagerImpl() {
+    }
+
     public CartManagerImpl(MyApplication myApplication) {
         loadSavedData(myApplication);
         this.myApplication = myApplication;
