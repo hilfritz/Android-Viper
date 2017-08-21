@@ -58,8 +58,8 @@
     <string name="no_products">No products available, please try again later.</string>
     <string name="something_went_wrong">Something went wrong. Please try again later.</string>
     <string name="empty_cart">Cart is empty.</string>
-    <string name="title_activity_product_list">ProductListActivity</string>
-    <string name="title_activity_product_detail">ProductDetailActivity</string>
+    <string name="title_activity_product_list"></string>
+    <string name="title_activity_product_detail"></string>
     <string name="label_loading">loading...</string>
     <string name="on_sale">On Sale!</string>
     <string name="price_holder">$ </string>
@@ -76,5 +76,5 @@
     <string name="save_cart_title">Save cart items?</string>
     <string name="save_cart_message">You have items in you cart. Save you cart items for next time or lose them.</string>
     <string name="save_cart_save">Save &amp; Exit</string>
-    <string name="save_cart_exit">Exit</string>
+    <string name="save_cart_exit">Lose &amp; Exit</string>
 </resources>
