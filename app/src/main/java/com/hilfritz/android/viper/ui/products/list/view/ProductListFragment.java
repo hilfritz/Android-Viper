@@ -22,8 +22,6 @@ import com.hilfritz.android.viper.ui.products.list.ProductListPresenter;
 import com.hilfritz.android.viper.ui.products.list.view.adapter.ProductListAdapter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -94,7 +92,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
 
             @Override
             public void onLoadMore() {
-                loadMore();
+                showLoadMore();
             }
         });
         presenter.populate();
@@ -129,32 +127,26 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     }
 
     @Override
-    public void showProductList(ArrayList<Product> products) {
-        adapter.notifyDataSetChanged();
-        list.loadMoreComplete();
+    public void showError(int strId) {
+        Toast.makeText(getActivity(), getString(strId), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void showProductListRetrieveError(String str) {
-        Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
-        list.loadMoreComplete();
-    }
-
-    @Override
-    public void showProductListRetrieveError(int stringId) {
-        Toast.makeText(getActivity(), getString(stringId), Toast.LENGTH_SHORT).show();
-        list.loadMoreComplete();
-    }
-
-    @Override
-    public void loadMoreFinish() {
-        list.loadMoreComplete();
-    }
-
-    @Override
-    public void loadMore() {
-        Log.d(TAG, "loadMore: ");
+    public void showLoadMore() {
+        Log.d(TAG, "showLoadMore: ");
         presenter.loadMore();
     }
+
+    @Override
+    public void hideLoadMore() {
+        list.loadMoreComplete();
+        list.setLoadingMoreEnabled(true);
+    }
+
+    @Override
+    public void notifyList() {
+        adapter.notifyDataSetChanged();
+    }
+
 
 }

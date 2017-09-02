@@ -67,21 +67,21 @@ public class ProductListPresenterImpl implements ProductListPresenter {
     @Override
     public void showProductList(ArrayList<Product> products) {
         list.addAll(products);
-        view.showProductList(products);
+        view.notifyList();
     }
 
     @Override
     public void showProductListRetrieveError(String str) {
-        view.showProductListRetrieveError(str);
+        view.showError(str);
     }
 
     @Override
     public void showProductListRetrieveError(int stringId) {
-        view.showProductListRetrieveError(stringId);
+        view.showError(stringId);
     }
 
     @Override
     public void loadMoreFinish() {
-        view.loadMoreFinish();
+        view.hideLoadMore();
     }
 }

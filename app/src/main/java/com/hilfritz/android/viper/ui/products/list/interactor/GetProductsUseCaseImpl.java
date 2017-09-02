@@ -5,6 +5,7 @@ import com.hilfritz.android.viper.application.interactor.AbstractBaseInteractor;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.ProductsListWrapper;
+import com.hilfritz.android.viper.ui.products.list.ProductListPresenter;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class GetProductsUseCaseImpl extends AbstractBaseInteractor implements Ge
     int currentPage = INITIAL_PAGE;
     String categoryName = "";
     int totalProductsInCategory = 0;
-    GetProductsUseCase.Callback presenterCallBack;
+    ProductListPresenter presenterCallBack;
     SephoraProductRepository sephoraProductRepository;
 
     int loadedCounter = 0;
@@ -28,7 +29,7 @@ public class GetProductsUseCaseImpl extends AbstractBaseInteractor implements Ge
     public GetProductsUseCaseImpl(Scheduler ioThread,
                                   Scheduler mainThread,
                                   SephoraProductRepository sephoraProductRepository,
-                                  GetProductsUseCase.Callback presenterCallBack,
+                                  ProductListPresenter presenterCallBack,
                                   String categoryName,
                                   int totalProductsInCategory
                                   ) {
