@@ -16,7 +16,10 @@ public class GetCategoriesUseCaseImpl extends AbstractBaseInteractor implements 
     SephoraProductRepository sephoraProductRepository;
     GetCategoriesUseCase.Callback presenterCallBack;
 
-    public GetCategoriesUseCaseImpl(Scheduler ioThread, Scheduler mainThread, SephoraProductRepository sephoraProductRepository, GetCategoriesUseCase.Callback presenterCallBack) {
+    public GetCategoriesUseCaseImpl(Scheduler ioThread,
+                                    Scheduler mainThread,
+                                    SephoraProductRepository sephoraProductRepository,
+                                    GetCategoriesUseCase.Callback presenterCallBack) {
         super(ioThread, mainThread);
         this.sephoraProductRepository = sephoraProductRepository;
         this.presenterCallBack = presenterCallBack;

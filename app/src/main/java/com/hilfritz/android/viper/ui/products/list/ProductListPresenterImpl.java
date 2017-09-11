@@ -21,7 +21,10 @@ public class ProductListPresenterImpl implements ProductListPresenter {
     ArrayList<Product> list = new ArrayList<>();
 
     @Override
-    public void init(ProductListView view, ThreadProvider threadProvider, SephoraProductRepository sephoraProductRepository,String categoryName, int totalProductsInCategory) {
+    public void init(ProductListView view,
+                     ThreadProvider threadProvider,
+                     SephoraProductRepository sephoraProductRepository,
+                     String categoryName, int totalProductsInCategory) {
         this.threadProvider = threadProvider;
         this.sephoraProductRepository = sephoraProductRepository;
         this.view = view;
@@ -65,10 +68,11 @@ public class ProductListPresenterImpl implements ProductListPresenter {
     }
 
     @Override
-    public void showProductList(ArrayList<Product> products) {
+    public void showProductList(ArrayList<Product> products, String categoryName) {
         list.addAll(products);
-        view.showProductList(products);
+        view.showProductList(products, categoryName);
     }
+
 
     @Override
     public void showProductListRetrieveError(String str) {

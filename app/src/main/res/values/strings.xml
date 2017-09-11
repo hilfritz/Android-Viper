@@ -51,6 +51,7 @@
     </string-array>
     <string name="title_activity_place_list">PlaceListActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="action_show_other_category">Show Other Categories</string>
     <string name="title_activity_home">Happy Shop</string>
 
     <string name="no_internet">Please make sure you got good internet connection.</string>

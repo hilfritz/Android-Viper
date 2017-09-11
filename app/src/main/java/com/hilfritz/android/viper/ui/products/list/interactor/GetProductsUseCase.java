@@ -20,7 +20,7 @@ public interface GetProductsUseCase extends BaseInteractor {
      * NOTE: usecase calbacks should be implemented on both presenter and view(fragment/activity/dialog)
      */
     public interface Callback{
-        void showProductList(ArrayList<Product> products);
+        void showProductList(ArrayList<Product> products, String categoryName);
         void showProductListRetrieveError(String str);
         void showProductListRetrieveError(int stringId);
         void loadMoreFinish();

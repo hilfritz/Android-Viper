@@ -68,7 +68,7 @@ public class HomePresenterImpl implements HomePresenter{
 
     @Override
     public void openCategoryProductList(String categoryName,int totalProductsInCategory) {
-        view.openCategoryProductsPage(categoryName, totalProductsInCategory);
+        view.openCategoryProductsPage(categoryName, totalProductsInCategory, getCategoryList());
     }
 
     @Override

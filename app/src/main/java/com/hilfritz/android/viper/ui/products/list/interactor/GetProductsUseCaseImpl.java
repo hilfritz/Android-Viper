@@ -63,14 +63,14 @@ public class GetProductsUseCaseImpl extends AbstractBaseInteractor implements Ge
                         if (productsListWrapper!=null
                                 && productsListWrapper.getProducts()!=null
                                 && productsListWrapper.getProducts().size()>0){
-                            presenterCallBack.showProductList(productsListWrapper.getProducts());
+                            presenterCallBack.showProductList(productsListWrapper.getProducts(), categoryName);
                             incrementPage();
                             incrementLoadedCounterBy(productsListWrapper.getProducts().size());
 
                         }else {
                             //empty list
                             if (loadedCounter==totalProductsInCategory){
-                                presenterCallBack.showProductList(new ArrayList<Product>());
+                                presenterCallBack.showProductList(new ArrayList<Product>(), categoryName);
                             }else{
                                 presenterCallBack.showProductListRetrieveError(R.string.something_went_wrong);
                             }

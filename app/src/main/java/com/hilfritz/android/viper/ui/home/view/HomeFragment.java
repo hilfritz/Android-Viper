@@ -21,6 +21,7 @@ import com.hilfritz.android.viper.application.base.BaseFragment;
 import com.hilfritz.android.viper.application.thread.ThreadProvider;
 import com.hilfritz.android.viper.data.cartRepository.CartManager;
 import com.hilfritz.android.viper.data.eventbus.BackButtonEvent;
+import com.hilfritz.android.viper.data.eventbus.DialogEvent;
 import com.hilfritz.android.viper.data.sephoraApi.SephoraProductRepository;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.category.Category;
 import com.hilfritz.android.viper.data.sephoraApi.pojo.products.Product;
@@ -154,8 +155,8 @@ public class HomeFragment extends BaseFragment implements HomeView{
     }
 
     @Override
-    public void openCategoryProductsPage(String categoryId,int totalProductsInCategory) {
-        router.openProductLists(getActivity(), categoryId, totalProductsInCategory);
+    public void openCategoryProductsPage(String categoryId, int totalProductsInCategory, ArrayList<Category> categoryList) {
+        router.openProductLists(getActivity(), categoryId, totalProductsInCategory, categoryList);
     }
 
     @Override
@@ -227,6 +228,7 @@ public class HomeFragment extends BaseFragment implements HomeView{
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
+
 
     @Subscribe
     public void onBackPressed(BackButtonEvent event){
